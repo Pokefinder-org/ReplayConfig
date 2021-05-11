@@ -5,13 +5,13 @@ Sets the default values for supported C64 ROMs to ease usage of cart binaries wi
 
 
 
-Usage:
+## Usage:
 
- perl replay-config.pl input-romfile [output-romfile]
+> perl replay-config.pl input-romfile [output-romfile]
 
 
 
-Supporting:
+### Supporting:
 
 * Action Replay 5/6
 * Turbo Action ROM v1/v2
@@ -22,12 +22,12 @@ Supporting:
 with options to:
 
 * Disable "ARE YOU SURE?" :)
-* Fill values, key codes, initial fastload setting
-* Network settings (IP, Netmask, Gateway, etc.)
+* Change Fill values, key codes, initial fastload setting and owner string
+* Change Network settings (IP, Netmask, Gateway, etc.)
 
 
 
-Coming up:
+### Coming up:
 
 * SUPERFLUID (as soon as useful options are spotted)
 * CyberpunX Replay 3.99+
