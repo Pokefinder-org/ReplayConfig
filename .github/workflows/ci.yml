@@ -8,25 +8,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Checkout tools
-      uses: actions/checkout@v4
-      with:
-        repository: Pokefinder-org/perl-win
-        path: perl
-
     - name: Checkout script
       uses: actions/checkout@v4
       with:
-        repository: Pokefinder-org/perl-win
+        repository: Pokefinder-org/ReplayConfig
         path: perl
 
-    - uses: DuckSoft/extract-7z-action@v1.0
-      with:
-        pathSource: perl/strawberry-perl-5.38.2.2-64bit-portable.zip
-        pathTarget: C:\perl\
-
     - name: Build
-      run: cmd.exe /c perl\build64.cmd
+      run: cmd.exe /c perl -v
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
