@@ -1,21 +1,8 @@
 #!/usr/bin/perl
 
-## replay-config.pl based on g64conv and other code found on the net
+## replay-config.pl based on g64conv (https://github.com/markusC64/g64conv) and other code found on the net
 ## use to configure known Retro Replay ROMs (CyberpunX, SUPERFLUID, Final Replay)
 ## Stupid idea and copy/paste code by count0@pokefinder.org in 2021
-
-### Do not remove the following lines, they ensure that
-### perl2exe ( http://www.perl2exe.com ) can be used to
-### make an executable that does not need an installed
-### version of perl.
-
-#perl2exe_include "PerlIO.pm"
-#perl2exe_include "PerlIO/scalar.pm"
-#perl2exe_include "utf8.pm"
-#perl2exe_include "unicore/Heavy.pl"
-#perl2exe_include "unicore/lib/Perl/_PerlIDS.pl"
-#perl2exe_include "PerlIO.pm"
-#perl2exe_include "File/Glob.pm"
 
 use strict;
 use warnings;
@@ -958,5 +945,8 @@ sub help {
        "- Retro Replay 3.8\n".
        "- SUPERFLUID (as soon as useful options are spotted)\n".
        "- The Final Replay 0.3 - 0.8\n".
-       "... and more\n\n";
+       "... and more\n\n".
+
+       "Check out https://github.com/Pokefinder-org/ReplayConfig and\n".
+       "https://rr.c64.org for the latest.\n\n";
 }

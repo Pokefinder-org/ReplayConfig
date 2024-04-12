@@ -2,30 +2,35 @@ name: CI
 
 on: [push, pull_request]
 
+jobs:
   build-windows-64:
-    runs-on: windows-2019
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
 
-    - name: Checkout private tools
-      uses: actions/checkout@v3
+    - name: Checkout tools
+      uses: actions/checkout@v4
       with:
-        repository: markusC64/perl-win
-        token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
+        repository: Pokefinder-org/perl-win
+        path: perl
+
+    - name: Checkout script
+      uses: actions/checkout@v4
+      with:
+        repository: Pokefinder-org/perl-win
         path: perl
 
     - uses: DuckSoft/extract-7z-action@v1.0
       with:
-        pathSource: perl/strawberryperl-5.32-64.7z 
-        pathTarget: C:\
+        pathSource: perl/strawberry-perl-5.38.2.2-64bit-portable.zip
+        pathTarget: C:\perl\
 
-    - name: Build dist
+    - name: Build
       run: cmd.exe /c perl\build64.cmd
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: g64conv-win64
+        name: replayconfig-win64
         path: |
-           g64conv.exe
-           templates/
+           replayconfig_win64.exe
