@@ -4,7 +4,9 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - run: choco install gh strawberryperl
+      - run: choco install gh
       - run: gh version
       - run: cmd.exe /c perl -v
+      - run: choco uninstall strawberryperl
+      - run: choco install strawberryperl
       - run: C:\Strawberry\perl\bin\perl -v
