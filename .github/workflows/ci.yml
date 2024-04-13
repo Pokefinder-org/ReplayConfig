@@ -1,29 +1,10 @@
-name: CI
+name: Build on Windows
+on: push
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: choco install gh strawberryperl
+      - run: gh version
+      - run: cmd.exe /c perl -v
 
-on: [push, pull_request]
-
-steps:
-  - uses: actions/checkout@v4
-  - uses: shogo82148/actions-setup-perl@v1
-    with:
-      perl-version: "5.32"
-      distribution: strawberry
-  - run: cpanm --installdeps .
-  - run: prove -lv t
-  - run: perl -V
-
-  - name: Checkout script
-      uses: actions/checkout@v4
-      with:
-        repository: Pokefinder-org/ReplayConfig
-        path: perl
-
-    - name: Build
-      run: cmd.exe /c perl -v
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: replayconfig-win64
-        path: |
-           replayconfig_win64.exe
