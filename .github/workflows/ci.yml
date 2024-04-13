@@ -1,7 +1,5 @@
 name: CI
-
 on: [push, pull_request]
-
 jobs:
   build-windows-64:
     runs-on: windows-latest
