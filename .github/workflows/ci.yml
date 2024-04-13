@@ -1,7 +1,7 @@
 name: Build on Windows
 on: push
 jobs:
- - name: Setup
+  Setup:
     runs-on: windows-latest
     steps:
       - run: choco install gh
@@ -11,18 +11,18 @@ jobs:
       - run: choco install strawberryperl
       - run: C:\Strawberry\perl\bin\perl -v
 
-  - name: Checkout script
+  Checkout:
       uses: actions/checkout@v4
       with:
         repository: Pokefinder-org/ReplayConfig
         path: perl
 
-  - name: Build
+  Build:
       steps:
       - run: cmd.exe /c perl -v
       - run: cmd.exe /c C:\Strawberry\perl\bin\pp -o C:\perl\replayconfig_win64.exe C:\perl\replayconfig.pl
 
-  - name: Upload artifacts
+  Upload:
       uses: actions/upload-artifact@v3
       with:
         name: replayconfig-win64
