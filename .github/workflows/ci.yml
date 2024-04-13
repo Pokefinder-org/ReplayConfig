@@ -12,8 +12,7 @@ jobs:
       - run: choco install strawberryperl
       - run: C:\Strawberry\perl\bin\perl -v
 
-      - name: Checkout script
+      - name: Checkout
         uses: actions/checkout@v4
           with:
-          repository: Pokefinder-org/ReplayConfig
-        path: perl
+            path: perl
