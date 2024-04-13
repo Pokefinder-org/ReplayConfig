@@ -11,18 +11,18 @@ jobs:
       - run: choco install strawberryperl
       - run: C:\Strawberry\perl\bin\perl -v
 
-  Checkout:
+  - name: Checkout script
       uses: actions/checkout@v4
       with:
         repository: Pokefinder-org/ReplayConfig
         path: perl
 
-  Build:
+  - name: Build
       steps:
       - run: cmd.exe /c perl -v
       - run: cmd.exe /c C:\Strawberry\perl\bin\pp -o C:\perl\replayconfig_win64.exe C:\perl\replayconfig.pl
 
-  Upload:
+  - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: replayconfig-win64
