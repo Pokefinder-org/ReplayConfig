@@ -2,18 +2,17 @@ name: CI
 
 on: [push, pull_request]
 
-job:
-  build-windows-64:
-    runs-on: windows-latest
-    steps:
-    - uses: shogo82148/actions-setup-perl@v1
+steps:
+  - uses: actions/checkout@v4
+  - uses: shogo82148/actions-setup-perl@v1
     with:
       perl-version: "5.32"
       distribution: strawberry
   - run: cpanm --installdeps .
   - run: prove -lv t
+  - run: perl -V
 
-    - name: Checkout script
+  - name: Checkout script
       uses: actions/checkout@v4
       with:
         repository: Pokefinder-org/ReplayConfig
