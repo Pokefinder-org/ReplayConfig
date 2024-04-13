@@ -7,4 +7,4 @@ jobs:
       - run: choco install gh strawberryperl
       - run: gh version
       - run: cmd.exe /c perl -v
-
+      - run: C:\Strawberry\bin\perl -v
