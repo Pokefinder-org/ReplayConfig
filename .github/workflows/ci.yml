@@ -6,18 +6,24 @@ jobs:
   build-windows-64:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+  - uses: actions/checkout@v4
+  - uses: shogo82148/actions-setup-perl@v1
+    with:
+      perl-version: "5.32"
+      distribution: strawberry
+  - run: cpanm --installdeps Par-Packer
+  - run: prove -lv t
 
-    - name: Checkout script
+  - name: Checkout script
       uses: actions/checkout@v4
       with:
         repository: Pokefinder-org/ReplayConfig
         path: perl
 
-    - name: Build
+  - name: Build
       run: cmd.exe /c perl -v
 
-    - name: Upload artifacts
+  - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: replayconfig-win64
