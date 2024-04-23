@@ -12,6 +12,6 @@ jobs:
       - run: choco install strawberryperl
       - run: C:\Strawberry\perl\bin\perl -v
 
-  Checkout:
+  Checkout-action:
       - name: Checkout
         uses: actions/checkout@v4
