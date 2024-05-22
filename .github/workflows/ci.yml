@@ -1,5 +1,9 @@
 name: Build on Windows
-on: push
+on: 
+  push:
+    tags:
+      - '*'
+
 jobs:
   perl-compile:
     runs-on: windows-latest
