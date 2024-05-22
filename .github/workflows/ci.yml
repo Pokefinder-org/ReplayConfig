@@ -12,12 +12,12 @@ jobs:
       - name: release
         uses: actions/create-release@v1
         id: create_release
-          with:
+        with:
             draft: false
             prerelease: false
             release_name: ${{ steps.version.outputs.version }}
             tag_name: ${{ github.ref }}
-          env:
+        env:
             GITHUB_TOKEN: ${{ github.token }}
 
       - name: Upload artifacts
@@ -29,9 +29,9 @@ jobs:
 
       - name: upload windows artifact
         uses: actions/upload-release-asset@v1
-          env:
+        env:
             GITHUB_TOKEN: ${{ github.token }}
-          with:
+        with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
             asset_path: perl\replay-config.pl
             asset_name: replay-config_winxx.exe
