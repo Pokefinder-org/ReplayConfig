@@ -20,5 +20,6 @@ jobs:
 
       - name: compile
         run: |
-              C:\Strawberry\perl\bin\pp.bat C:\perl\replay-config.pl -o C:\perl\replay-config.exe
-              dir C:\perl
+              cd D:\a\ReplayConfig\ReplayConfig\
+              C:\Strawberry\perl\bin\pp.bat D:\a\ReplayConfig\ReplayConfig\replay-config.pl -o D:\a\ReplayConfig\ReplayConfig\replay-config.exe
+              dir D:\a\ReplayConfig\ReplayConfig\
