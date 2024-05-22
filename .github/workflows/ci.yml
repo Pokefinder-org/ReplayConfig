@@ -26,6 +26,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: replayconfig-win64.exe
+          name: replay-config_win64.exe
           path: |
-                perl\replayconfig_win64.exe
+                perl\replay-config.exe
