@@ -19,4 +19,4 @@ jobs:
           path: perl
 
       - name: compile
-        run: C:\Strawberry\perl\bin\pp.exe C:\perl\replay-config.pl C:\perl\replay-config.exe
+        run: C:\Strawberry\perl\bin\pp.bat C:\perl\replay-config.pl -o C:\perl\replay-config.exe
