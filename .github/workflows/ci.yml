@@ -8,10 +8,24 @@ jobs:
   perl-compile:
     runs-on: windows-latest
     steps:
+      - name: chocoperl
+        run: |
+              choco install gh
+              gh version
+              cmd.exe /c perl -v
+              choco uninstall strawberryperl
+              choco install strawberryperl
+              C:\Strawberry\perl\bin\perl -v
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           path: perl
+
+      - name: compile
+        run: |
+              cd D:\a\ReplayConfig\ReplayConfig\perl\
+              C:\Strawberry\perl\bin\pp.bat D:\a\ReplayConfig\ReplayConfig\perl\replay-config.pl -o D:\a\ReplayConfig\ReplayConfig\perl\replay-config.exe
 
       - name: release
         uses: actions/create-release@v1
@@ -27,9 +41,9 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: replay-config_winxx.exe
+          name: replay-config_win64.exe
           path: |
-                perl\replay-config.pl
+                perl\replay-config.exe
 
       - name: upload windows artifact
         uses: actions/upload-release-asset@v1
@@ -37,6 +51,6 @@ jobs:
             GITHUB_TOKEN: ${{ github.token }}
         with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: perl\replay-config.pl
-            asset_name: replay-config_winxx.exe
+            asset_path: perl\replay-config.exe
+            asset_name: replay-config_win64.exe
             asset_content_type: application/exe
