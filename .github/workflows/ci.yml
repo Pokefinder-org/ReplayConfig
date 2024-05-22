@@ -1,17 +1,21 @@
 name: Build on Windows
 on: push
 jobs:
-  Setup:
+  perl-compile:
     runs-on: windows-latest
     steps:
       - name: chocoperl
-      - run: choco install gh
-      - run: gh version
-      - run: cmd.exe /c perl -v
-      - run: choco uninstall strawberryperl
-      - run: choco install strawberryperl
-      - run: C:\Strawberry\perl\bin\perl -v
+        run: |
+              choco install gh
+              gh version
+              cmd.exe /c perl -v
+              choco uninstall strawberryperl
+              choco install strawberryperl
+              C:\Strawberry\perl\bin\perl -v
 
-  Checkout-action:
       - name: Checkout
         uses: actions/checkout@v4
+        path: perl
+
+      - name: compile
+        run: C:\Strawberry\perl\bin\pp.exe C:\perl\replay-config.pl C:\perl\replay-config.exe
